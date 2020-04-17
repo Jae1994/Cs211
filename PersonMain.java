@@ -8,12 +8,18 @@ public class PersonMain {
 		//Scanner for getting user input
 		Scanner input = new Scanner(System.in);
 		ArrayList<Person> names =new ArrayList<Person>();
-		//puts 
+		//Turns all the names into a Person object and puts them into an ArrayList
+		//, sets maternal/paternal lines and children of that person.
 		create(scan, names);
 		//Enter user input
-		System.out.print("Person's name? ");
-		//prints out all the info
-		userSearch(input.nextLine(), names);
+		//loops until user types in "STOP"
+		System.out.println("Type in "+"STOP"+" to stop printing info");
+		do {
+			System.out.print("Person's name? ");
+			//prints out all the info
+			userSearch(input.nextLine(), names);
+			System.out.print("\nPerson's name? ");
+		}while(!input.next().equals("STOP"));
 		input.close();
 	}
 	
@@ -44,17 +50,23 @@ public class PersonMain {
 				}
 			}
 		}
+		
+		
+		
 		//based on p.getMom/getDad, finds out children and 
 		//puts them into Person objects in the ArrayList.
 		for(int i = 0; i < names.size(); i++) {
 			for(Person p : names) {
-				if(p.getName().equals(names.get(i).getDad())||p.getName().equals(names.get(i).getMom())) {
+				if(p.getName().equals(names.get(i).getDad())||p.getName().equals(names.get(i).getMom())) 
+				{
 					p.setChildren(names.get(i).getName());
 					
 				}
 			}
 		}
-		}
+		
+	}
+		
 					
 	//prints out all the info based on the passed String. 
 	//e.g: userSearch("Henry VIII", names);
@@ -70,18 +82,28 @@ public class PersonMain {
 	//	  Elizabeth I
 	//	  Edward VI
 	public static void userSearch(String s, ArrayList<Person> names) {
+		int count = 0;
 		for(Person p: names) {
 			if(s.equals(p.getName())) {
 				System.out.println("Maternal line: \n    "+p.getName()+"\n\t"+p.getMom());
 				System.out.println("Paternal line: \n    "+p.getName()+"\n\t"+p.getDad());
 				System.out.print("Children:\n");	
-				for(int i = 0; i<p.getChildren().size();i++) {
-					System.out.println("    "+p.getChildren().get(i));
-				}
+				if (p.getChildren().size() > 0) {
+		               for(int i = 0; i<p.getChildren().size();i++) {
+		                  System.out.println("    "+p.getChildren().get(i));
+		               }
+		            }
+		            else {
+		               System.out.println("none");
+		            }
+				count++;
 			}
 		}
+		if(count<1) {
+			System.out.println("Your Search is not found on the list");
+		}
 	}
-	//prints the list of names of the person objects in the ArrayList.	
+	//prints the first list of names of the person objects in the ArrayList.	
 	public static void printList(ArrayList<Person> names){
 		for(Person p: names) {
 			System.out.println(p.getName());
