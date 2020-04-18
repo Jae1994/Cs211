@@ -1,4 +1,4 @@
-//Vinh Nguyen, Jae Cho, Alex Larsen
+//Vinh Nguyen, Jae Choi, Alex Larsen
 //Team Project 1
 
 //This class creates fields for a person's name and lineage (mom, dad, and children).
