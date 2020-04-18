@@ -14,13 +14,13 @@ public class PersonMain {
 		create(scan, names);
 		//Enter user input
 		//loops until user types in "STOP"
-		System.out.println("type any word to start, and type in STOP to stop the program");
+		System.out.println("type any word to start, and type in STOP to end the program");
 		String line = input.nextLine();
 		while(!line.equals("STOP")) {
 			System.out.print("Person's name? ");
 			line = input.nextLine();
 			if(line.equals("STOP")) {
-				System.out.println("\nThe program stops here");
+				System.out.println("\nThe program ends here");
 			}else{
 				userSearch(line, names);
 			}
