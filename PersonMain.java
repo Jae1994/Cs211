@@ -1,5 +1,6 @@
-import java.io.*;
+import java.io.*; 
 import java.util.*;
+
 
 public class PersonMain {
 	public static void main(String[] args) throws FileNotFoundException {
@@ -13,13 +14,19 @@ public class PersonMain {
 		create(scan, names);
 		//Enter user input
 		//loops until user types in "STOP"
-		System.out.println("Type in "+"STOP"+" to stop printing info");
-		do {
+		System.out.println("type any word to start, and type in STOP to stop the program");
+		String line = input.nextLine();
+		while(!line.equals("STOP")) {
 			System.out.print("Person's name? ");
-			//prints out all the info
-			userSearch(input.nextLine(), names);
-			System.out.print("\nPerson's name? ");
-		}while(!input.next().equals("STOP"));
+			line = input.nextLine();
+			if(line.equals("STOP")) {
+				System.out.println("\nThe program stops here");
+			}else{
+				userSearch(line, names);
+			}
+			
+		}
+		
 		input.close();
 	}
 	
@@ -96,6 +103,7 @@ public class PersonMain {
 		            else {
 		               System.out.println("none");
 		            }
+				System.out.println();
 				count++;
 			}
 		}
