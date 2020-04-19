@@ -1,3 +1,10 @@
+//Vinh Nguyen, Jae Choi, Alex Larsen
+//Team Project 1
+
+//This class contains the main method, which allows the user to search for a name.
+//It then displays the lineage of the person typed, and prompts the user to type another name or stop.
+//The class contains a scanner which reads the names from the name list file, then adds them to ArrayLists in the create method.
+//It also sets the parents and children of each person.
 import java.io.*; 
 import java.util.*;
 
@@ -14,15 +21,16 @@ public class PersonMain {
 		create(scan, names);
 		//Enter user input
 		//loops until user types in "STOP"
-		System.out.println("type any word to start, and type in STOP to end the program");
+		System.out.println("Type in any word to start the program, and type in STOP to end the program");
 		String line = input.nextLine();
-		while(!line.equals("STOP")) {
-			System.out.print("Person's name? ");
+		while(!line.equalsIgnoreCase("STOP")) {
+			System.out.print("\nPerson's name? ");
 			line = input.nextLine();
-			if(line.equals("STOP")) {
+			if(line.equalsIgnoreCase("STOP")) {
 				System.out.println("\nThe program ends here");
 			}else{
 				userSearch(line, names);
+				System.out.println("If you want to end the program, type in STOP");
 			}
 			
 		}
@@ -103,15 +111,15 @@ public class PersonMain {
 		            else {
 		               System.out.println("none");
 		            }
-				System.out.println();
+				
 				count++;
 			}
 		}
-		if(count<1) {
-			System.out.println("Your Search is not found on the list");
+		if(count < 1) {
+			System.out.println("The name you typed in was not found on the list\n");
 		}
 	}
-	//prints the first list of names of the person objects in the ArrayList.	
+	//prints the first list of names(Names you can use to search the family tree).	
 	public static void printList(ArrayList<Person> names){
 		for(Person p: names) {
 			System.out.println(p.getName());
